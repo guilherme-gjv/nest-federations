@@ -1,23 +1,29 @@
 import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
-import { UsersService } from './users.service';
 import { CreateUserInput } from './dto/create-user.input';
+import { CommandBus, QueryBus } from '@nestjs/cqrs';
+import { CreateUserCommand } from './commands/create-user.command';
+import { GetUsersQuery } from './queries/get-users.query';
+import { GetUserQuery } from './queries/get-user.query';
 
 @Resolver('User')
 export class UsersResolver {
-  constructor(private readonly usersService: UsersService) {}
+  constructor(
+    private readonly commandBus: CommandBus,
+    private readonly queryBus: QueryBus,
+  ) {}
 
   @Mutation('createUser')
   create(@Args('createUserInput') createUserInput: CreateUserInput) {
-    return this.usersService.create(createUserInput);
+    return this.commandBus.execute(new CreateUserCommand(createUserInput));
   }
 
   @Query('users')
   findAll() {
-    return this.usersService.findAll();
+    return this.queryBus.execute(new GetUsersQuery());
   }
 
   @Query('user')
   findOne(@Args('id') id: string) {
-    return this.usersService.findOne(id);
+    return this.queryBus.execute(new GetUserQuery(id));
   }
 }
