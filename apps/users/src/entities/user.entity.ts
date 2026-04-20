@@ -1,24 +1,10 @@
 export class User {
-  id: string;
-  name: string;
-  email: string;
-  password: string;
-  createdAt: string;
-  updatedAt: string;
-
   constructor(
-    id: string,
-    name: string,
-    email: string,
-    password: string,
-    createdAt: string,
-    updatedAt: string,
-  ) {
-    this.id = id;
-    this.name = name;
-    this.email = email;
-    this.password = password;
-    this.createdAt = createdAt;
-    this.updatedAt = updatedAt;
-  }
+    public readonly id: string,
+    public readonly name: string,
+    public readonly email: string,
+    public readonly password: string,
+    public readonly createdAt: string,
+    public readonly updatedAt: string,
+  ) {}
 }
