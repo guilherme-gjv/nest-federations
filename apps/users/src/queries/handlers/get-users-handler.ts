@@ -15,6 +15,14 @@ export class GetUsersHandler implements IQueryHandler<GetUsersQuery> {
         createdAt: new Date().toString(),
         updatedAt: new Date().toString(),
       },
+      {
+        id: '2',
+        name: 'Marcinho',
+        email: 'marcinho@email.com',
+        password: '123',
+        createdAt: new Date().toString(),
+        updatedAt: new Date().toString(),
+      },
     ];
   }
 }
