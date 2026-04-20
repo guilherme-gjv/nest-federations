@@ -1,0 +1,20 @@
+{
+  "monorepo": true,
+  "root": "apps/nest-federations-source",
+  "sourceRoot": "apps/nest-federations-source/src",
+  "compilerOptions": {
+    "webpack": true,
+    "tsConfigPath": "apps/nest-federations-source/tsconfig.app.json"
+  },
+  "projects": {
+    "users": {
+      "type": "application",
+      "root": "apps/users",
+      "entryFile": "main",
+      "sourceRoot": "apps/users/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/users/tsconfig.app.json"
+      }
+    }
+  }
+}
