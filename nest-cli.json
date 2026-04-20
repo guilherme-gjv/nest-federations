@@ -7,6 +7,15 @@
     "tsConfigPath": "apps/nest-federations-source/tsconfig.app.json"
   },
   "projects": {
+    "posts": {
+      "type": "application",
+      "root": "apps/posts",
+      "entryFile": "main",
+      "sourceRoot": "apps/posts/src",
+      "compilerOptions": {
+        "tsConfigPath": "apps/posts/tsconfig.app.json"
+      }
+    },
     "users": {
       "type": "application",
       "root": "apps/users",
