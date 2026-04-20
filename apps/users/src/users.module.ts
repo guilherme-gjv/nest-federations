@@ -11,9 +11,7 @@ import {
   imports: [
     GraphQLModule.forRoot<ApolloFederationDriverConfig>({
       driver: ApolloFederationDriver,
-      autoSchemaFile: {
-        federation: 2,
-      },
+      typePaths: ['./**/*.graphql'],
     }),
   ],
   providers: [UsersResolver, UsersService],

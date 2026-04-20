@@ -1,0 +1,56 @@
+{
+  "name": "users",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/users/src",
+  "projectType": "application",
+  "targets": {
+    "compile": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/users",
+        "main": "apps/users/src/main.ts",
+        "tsConfig": "apps/users/tsconfig.app.json",
+        "assets": [
+          {
+            "glob": "**/*.graphql",
+            "input": "apps/users/src",
+            "output": "./"
+          }
+        ]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "options": {
+        "buildTarget": "users:compile",
+        "watch": true
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "users:compile:production"
+        }
+      }
+    },
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "nx serve users"
+      }
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "nx serve users"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}
