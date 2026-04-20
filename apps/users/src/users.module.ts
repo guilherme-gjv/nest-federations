@@ -14,7 +14,7 @@ import { GetUsersHandler } from './queries/handlers/get-users-handler';
   imports: [
     GraphQLModule.forRoot<ApolloFederationDriverConfig>({
       driver: ApolloFederationDriver,
-      typePaths: ['./**/*.graphql'],
+      typePaths: ['apps/users/src/**/*.graphql'],
     }),
     CqrsModule.forRoot(),
   ],

@@ -14,7 +14,7 @@ import { GetPostsHandler } from './queries/handlers/get-posts.handler';
   imports: [
     GraphQLModule.forRoot<ApolloFederationDriverConfig>({
       driver: ApolloFederationDriver,
-      typePaths: ['./**/*.graphql'],
+      typePaths: ['apps/posts/src/**/*.graphql'],
     }),
     CqrsModule.forRoot(),
   ],
