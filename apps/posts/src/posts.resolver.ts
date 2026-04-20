@@ -35,7 +35,7 @@ export class PostsResolver {
     return this.queryBus.execute(new GetPostQuery(id));
   }
 
-  @ResolveField('user')
+  @ResolveField('author')
   getUser(@Parent() post: Post) {
     return { __typename: 'User', id: post.authorId };
   }

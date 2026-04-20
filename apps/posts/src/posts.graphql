@@ -1,8 +1,9 @@
-type Post {
+type Post @key(fields: "id") {
   id: Int!
   title: String!
   content: String!
   authorId: Int!
+  author: User
 }
 
 input CreatePostInput {
