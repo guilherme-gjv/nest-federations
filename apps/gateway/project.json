@@ -1,0 +1,57 @@
+{
+  "name": "gateway",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/gateway/src",
+  "projectType": "application",
+  "targets": {
+    "compile": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/gateway",
+        "main": "apps/gateway/src/main.ts",
+        "tsConfig": "apps/gateway/tsconfig.app.json",
+        "assets": [
+          {
+            "glob": "**/*.graphql",
+            "input": "apps/gateway/src",
+            "output": "./"
+          }
+        ]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "options": {
+        "buildTarget": "gateway:compile",
+        "watch": true,
+        "inspect": false
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "gateway:compile:production"
+        }
+      }
+    },
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "nx serve gateway"
+      }
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "nx serve gateway"
+      }
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}

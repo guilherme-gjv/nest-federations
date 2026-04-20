@@ -31,5 +31,10 @@
         "targetName": "lint"
       }
     }
-  ]
+  ],
+  "projects": {
+    "users": "apps/users",
+    "posts": "apps/posts",
+    "gateway": "apps/gateway"
+  }
 }

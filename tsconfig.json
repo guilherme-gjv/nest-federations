@@ -5,6 +5,12 @@
   "references": [
     {
       "path": "./apps/users"
+    },
+    {
+      "path": "./apps/posts"
+    },
+    {
+      "path": "./apps/gateway"
     }
   ],
   "compilerOptions": {
