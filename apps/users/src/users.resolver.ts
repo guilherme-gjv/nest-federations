@@ -1,4 +1,10 @@
-import { Resolver, Query, Mutation, Args } from '@nestjs/graphql';
+import {
+  Resolver,
+  Query,
+  Mutation,
+  Args,
+  ResolveReference,
+} from '@nestjs/graphql';
 import { CreateUserInput } from './dto/create-user.input';
 import { CommandBus, QueryBus } from '@nestjs/cqrs';
 import { CreateUserCommand } from './commands/create-user.command';
@@ -25,5 +31,10 @@ export class UsersResolver {
   @Query('user')
   findOne(@Args('id') id: string) {
     return this.queryBus.execute(new GetUserQuery(id));
+  }
+
+  @ResolveReference()
+  resolveReference(reference: { __typename: string; id: string }) {
+    return this.queryBus.execute(new GetUserQuery(reference.id));
   }
 }

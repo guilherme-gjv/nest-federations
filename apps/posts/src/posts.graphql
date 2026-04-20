@@ -19,3 +19,8 @@ type Query {
 type Mutation {
   createPost(createPostInput: CreatePostInput!): Post!
 }
+
+extend type User @key(fields: "id") {
+  id: ID! @external
+  posts: [Post]
+}
