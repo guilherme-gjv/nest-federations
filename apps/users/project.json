@@ -4,7 +4,7 @@
   "sourceRoot": "apps/users/src",
   "projectType": "application",
   "targets": {
-    "compile": {
+    "build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
@@ -28,12 +28,12 @@
     "serve": {
       "executor": "@nx/js:node",
       "options": {
-        "buildTarget": "users:compile",
+        "buildTarget": "users:build",
         "watch": true
       },
       "configurations": {
         "production": {
-          "buildTarget": "users:compile:production"
+          "buildTarget": "users:build:production"
         }
       }
     },

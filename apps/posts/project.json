@@ -4,7 +4,7 @@
   "sourceRoot": "apps/posts/src",
   "projectType": "application",
   "targets": {
-    "compile": {
+    "build": {
       "executor": "@nx/js:tsc",
       "outputs": ["{options.outputPath}"],
       "options": {
@@ -28,13 +28,13 @@
     "serve": {
       "executor": "@nx/js:node",
       "options": {
-        "buildTarget": "posts:compile",
+        "buildTarget": "posts:build",
         "watch": true,
         "inspect": false
       },
       "configurations": {
         "production": {
-          "buildTarget": "posts:compile:production"
+          "buildTarget": "posts:build:production"
         }
       }
     },
