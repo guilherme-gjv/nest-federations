@@ -1,7 +1,7 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { GetUsersQuery } from '../get-users.query';
 import { User } from '../../entities/user.entity';
-import { usersMock } from '../../../usersMock';
+import { usersMock } from '../../usersMock';
 
 @QueryHandler(GetUsersQuery)
 export class GetUsersHandler implements IQueryHandler<GetUsersQuery> {

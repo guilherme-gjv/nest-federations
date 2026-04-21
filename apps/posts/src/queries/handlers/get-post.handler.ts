@@ -1,7 +1,7 @@
 import { IQueryHandler, QueryHandler } from '@nestjs/cqrs';
 import { GetPostQuery } from '../get-post.query';
 import { Post } from '../../entities/post.entity';
-import { postsMock } from '../../../postsMock';
+import { postsMock } from '../../postsMock';
 
 @QueryHandler(GetPostQuery)
 export class GetPostHandler implements IQueryHandler<GetPostQuery> {
