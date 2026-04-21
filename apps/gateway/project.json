@@ -34,7 +34,8 @@
       },
       "configurations": {
         "production": {
-          "buildTarget": "gateway:build:production"
+          "buildTarget": "gateway:build:production",
+          "watch": false
         }
       }
     },
@@ -47,8 +48,15 @@
     "start": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "nx serve gateway"
-      }
+        "command": "node dist/apps/gateway/src/main.js"
+      },
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "self",
+          "params": "forward"
+        }
+      ]
     },
     "lint": {
       "executor": "@nx/eslint:lint"

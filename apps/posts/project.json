@@ -34,7 +34,8 @@
       },
       "configurations": {
         "production": {
-          "buildTarget": "posts:build:production"
+          "buildTarget": "posts:build:production",
+          "watch": false
         }
       }
     },
@@ -47,8 +48,15 @@
     "start": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "nx serve posts"
-      }
+        "command": "node dist/apps/posts/src/main.js"
+      },
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "self",
+          "params": "forward"
+        }
+      ]
     },
     "lint": {
       "executor": "@nx/eslint:lint"
