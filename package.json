@@ -17,6 +17,7 @@
     "@nestjs/mapped-types": "*",
     "@nestjs/platform-express": "^11.0.0",
     "axios": "^1.6.0",
+    "dataloader": "^2.2.3",
     "graphql": "^16.13.2",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^7.8.0"

@@ -1,20 +1,20 @@
 type Post @key(fields: "id") {
-  id: Int!
+  id: ID!
   title: String!
   content: String!
-  authorId: Int!
+  authorId: ID!
   author: User
 }
 
 input CreatePostInput {
   title: String!
   content: String!
-  authorId: Int!
+  authorId: ID!
 }
 
 type Query {
   posts: [Post]!
-  post(id: Int!): Post
+  post(id: ID!): Post
 }
 
 type Mutation {

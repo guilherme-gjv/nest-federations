@@ -9,6 +9,9 @@ import { CqrsModule } from '@nestjs/cqrs';
 import { CreatePostHandler } from './commands/handlers/create-post.handler';
 import { GetPostHandler } from './queries/handlers/get-post.handler';
 import { GetPostsHandler } from './queries/handlers/get-posts.handler';
+import { PostsByUserLoader } from './loaders/posts-by-user.loader';
+import { UserPostsResolver } from './user-posts.resolver';
+import { GetPostsByUserIdsHandler } from './queries/handlers/get-posts-by-user-ids.handler';
 
 @Module({
   imports: [
@@ -23,6 +26,9 @@ import { GetPostsHandler } from './queries/handlers/get-posts.handler';
     CreatePostHandler,
     GetPostHandler,
     GetPostsHandler,
+    PostsByUserLoader,
+    UserPostsResolver,
+    GetPostsByUserIdsHandler,
   ],
 })
 export class PostsModule {}
