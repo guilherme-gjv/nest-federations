@@ -4,11 +4,12 @@ import {
   Parent,
   ResolveReference,
 } from '@nestjs/graphql';
-import { PostsByUserLoader } from './loaders/posts-by-user.loader';
+import { QueryBus } from '@nestjs/cqrs';
+import { GetPostsByUserIdQuery } from './queries/get-posts-by-user-id.query';
 
 @Resolver('User')
 export class UserPostsResolver {
-  constructor(private readonly postsByUserLoader: PostsByUserLoader) {}
+  constructor(private readonly queryBus: QueryBus) {}
 
   @ResolveReference()
   resolveReference(reference: { __typename: string; id: string }) {
@@ -17,6 +18,6 @@ export class UserPostsResolver {
 
   @ResolveField('posts')
   getPosts(@Parent() user: { id: string }) {
-    return this.postsByUserLoader.load(user.id);
+    return this.queryBus.execute(new GetPostsByUserIdQuery(user.id));
   }
 }

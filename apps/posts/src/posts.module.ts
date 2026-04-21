@@ -11,6 +11,7 @@ import { GetPostHandler } from './queries/handlers/get-post.handler';
 import { GetPostsHandler } from './queries/handlers/get-posts.handler';
 import { PostsByUserLoader } from './loaders/posts-by-user.loader';
 import { UserPostsResolver } from './user-posts.resolver';
+import { GetPostsByUserIdHandler } from './queries/handlers/get-posts-by-user-id.handler';
 import { GetPostsByUserIdsHandler } from './queries/handlers/get-posts-by-user-ids.handler';
 
 @Module({
@@ -28,6 +29,7 @@ import { GetPostsByUserIdsHandler } from './queries/handlers/get-posts-by-user-i
     GetPostsHandler,
     PostsByUserLoader,
     UserPostsResolver,
+    GetPostsByUserIdHandler,
     GetPostsByUserIdsHandler,
   ],
 })
