@@ -1,0 +1,16 @@
+services:
+  postgres:
+    image: postgres:17
+    container_name: nest_federations_postgres
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: nest_federations_db
+    ports:
+      - '5435:5432'
+    volumes:
+      - nest_federations_postgres_data:/var/lib/postgresql/data
+
+volumes:
+  nest_federations_postgres_data:
