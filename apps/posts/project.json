@@ -1,0 +1,65 @@
+{
+  "name": "posts",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/posts/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": ["{options.outputPath}"],
+      "options": {
+        "outputPath": "dist/apps/posts",
+        "main": "apps/posts/src/main.ts",
+        "tsConfig": "apps/posts/tsconfig.app.json",
+        "assets": [
+          {
+            "glob": "**/*.graphql",
+            "input": "apps/posts/src",
+            "output": "./"
+          }
+        ]
+      },
+      "configurations": {
+        "production": {
+          "optimization": true
+        }
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "options": {
+        "buildTarget": "posts:build",
+        "watch": true,
+        "inspect": false
+      },
+      "configurations": {
+        "production": {
+          "buildTarget": "posts:build:production",
+          "watch": false
+        }
+      }
+    },
+    "dev": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "nx serve posts"
+      }
+    },
+    "start": {
+      "executor": "nx:run-commands",
+      "options": {
+        "command": "node dist/apps/posts/src/main.js"
+      },
+      "dependsOn": [
+        {
+          "target": "build",
+          "projects": "self",
+          "params": "forward"
+        }
+      ]
+    },
+    "lint": {
+      "executor": "@nx/eslint:lint"
+    }
+  }
+}
