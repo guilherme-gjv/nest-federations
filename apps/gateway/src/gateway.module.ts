@@ -2,6 +2,7 @@ import { Module } from '@nestjs/common';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloGatewayDriver, ApolloGatewayDriverConfig } from '@nestjs/apollo';
 import { IntrospectAndCompose } from '@apollo/gateway';
+import { ConfigModule } from '@nestjs/config';
 
 @Module({
   imports: [
@@ -16,6 +17,7 @@ import { IntrospectAndCompose } from '@apollo/gateway';
         }),
       },
     }),
+    ConfigModule.forRoot(),
   ],
 })
 export class GatewayModule {}

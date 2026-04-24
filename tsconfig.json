@@ -15,6 +15,13 @@
   ],
   "compilerOptions": {
     "baseUrl": "./",
-    "paths": {}
+    "paths": {
+      "@app/database": [
+        "libs/database/src"
+      ],
+      "@app/database/*": [
+        "libs/database/src/*"
+      ]
+    }
   }
 }
