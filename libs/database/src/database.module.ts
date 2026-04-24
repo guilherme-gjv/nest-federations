@@ -1,7 +1,6 @@
 import { Module } from '@nestjs/common';
 import { DatabaseService } from './database.service';
 import { MikroOrmModule } from '@mikro-orm/nestjs';
-import mikroOrmConfig from './mikro-orm.config';
 import { User } from './entities/user.entity';
 import { Account } from './entities/account.entity';
 import { Session } from './entities/session.entity';
@@ -14,10 +13,15 @@ import { UserRepository } from './repositories/user.repository';
 import { AccountRepository } from './repositories/account.repository';
 import { SessionRepository } from './repositories/session.repository';
 import { VerificationRepository } from './repositories/verification.repository';
+import { ConfigService } from '@nestjs/config';
+import { getMikroOrmConfig } from './mikro-orm.config';
 
 @Module({
   imports: [
-    MikroOrmModule.forRoot(mikroOrmConfig),
+    MikroOrmModule.forRootAsync({
+      inject: [ConfigService],
+      useFactory: (config: ConfigService) => getMikroOrmConfig(config),
+    }),
     MikroOrmModule.forFeature([User, Account, Session, Verification]),
   ],
   providers: [

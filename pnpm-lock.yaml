@@ -23,6 +23,9 @@ importers:
       '@mikro-orm/core':
         specifier: ^7.0.12
         version: 7.0.12(dataloader@2.2.3)
+      '@mikro-orm/migrations':
+        specifier: ^7.0.12
+        version: 7.0.12(@mikro-orm/core@7.0.12(dataloader@2.2.3))
       '@mikro-orm/nestjs':
         specifier: ^7.0.1
         version: 7.0.1(@mikro-orm/core@7.0.12(dataloader@2.2.3))(@nestjs/common@11.1.19(reflect-metadata@0.1.14)(rxjs@7.8.2))(@nestjs/core@11.1.19)(reflect-metadata@0.1.14)
@@ -59,6 +62,9 @@ importers:
       dataloader:
         specifier: ^2.2.3
         version: 2.2.3
+      dotenv:
+        specifier: ^17.4.2
+        version: 17.4.2
       graphql:
         specifier: ^16.13.2
         version: 16.13.2
@@ -72,6 +78,9 @@ importers:
       '@eslint/js':
         specifier: ^9.8.0
         version: 9.39.4
+      '@mikro-orm/cli':
+        specifier: ^7.0.12
+        version: 7.0.12(dataloader@2.2.3)
       '@nestjs/schematics':
         specifier: ^11.0.0
         version: 11.1.0(chokidar@4.0.3)(prettier@3.6.2)(typescript@5.9.3)
@@ -1273,6 +1282,11 @@ packages:
     resolution: {integrity: sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA==}
     engines: {node: '>=8'}
 
+  '@mikro-orm/cli@7.0.12':
+    resolution: {integrity: sha512-8X9JP/J0iOrjnYAGVDYyKRtqj2EJt8aeYCnkrxPVrZnZ14Oa+zDC64scPgUi6aJ0DoP+PE8oy9xc/ul7qsMYEg==}
+    engines: {node: '>= 22.17.0'}
+    hasBin: true
+
   '@mikro-orm/core@7.0.12':
     resolution: {integrity: sha512-XsqlIufHEDP2E8YUPAFG85wYhSu+YB6qVevbUnXIQpTjml02S/fbnlBn90YxbxNLLLTn3FqAK1iYSzja0eXRSw==}
     engines: {node: '>= 22.17.0'}
@@ -1281,6 +1295,12 @@ packages:
     peerDependenciesMeta:
       dataloader:
         optional: true
+
+  '@mikro-orm/migrations@7.0.12':
+    resolution: {integrity: sha512-8I0tga98tvPkwXF+tlAn9AzCTy7+4jsXmCOwDIY/NprJpkCvXWwEPds/ad19w0OMeG98wpCMikFc9PvHIOz/0g==}
+    engines: {node: '>= 22.17.0'}
+    peerDependencies:
+      '@mikro-orm/core': 7.0.12
 
   '@mikro-orm/nestjs@7.0.1':
     resolution: {integrity: sha512-0VWaGIsVLMI6XDrrblX5om5lyf4msjlRu405jtuUYQ+nULK+XU2gb2mvzo7UvYZd//eEoXtMlkY5oEykm5Hriw==}
@@ -3112,6 +3132,10 @@ packages:
     resolution: {integrity: sha512-k8DaKGP6r1G30Lx8V4+pCsLzKr8vLmV2paqEj1Y55GdAgJuIqpRp5FfajGF8KtwMxCz9qJc6wUIJnm053d/WCw==}
     engines: {node: '>=12'}
 
+  dotenv@17.4.2:
+    resolution: {integrity: sha512-nI4U3TottKAcAD9LLud4Cb7b2QztQMUEfHbvhTH09bqXTxnSie8WnjPALV/WMCrJZ6UV/qHJ6L03OqO3LcdYZw==}
+    engines: {node: '>=12'}
+
   dunder-proto@1.0.1:
     resolution: {integrity: sha512-KIN/nDJBQRcXw0MLVhZE9iQHmG68qAVIBg9CqmUYjmQIhgij9U5MFvrqkUL5FbtyyzZuOeOt0zdeRe4UY7ct+A==}
     engines: {node: '>= 0.4'}
@@ -4309,6 +4333,10 @@ packages:
   micromatch@4.0.8:
     resolution: {integrity: sha512-PXwfBhYu0hBCPw8Dn0E+WDYb7af3dSLVWKi3HGv84IdF4TyFoC0ysxFd0Goxw7nSv4T/PzEJQxsYsEiFCKo2BA==}
     engines: {node: '>=8.6'}
+
+  mikro-orm@7.0.12:
+    resolution: {integrity: sha512-KEiA5XiYrwmFdNZ+RXklE4YpQAWT+XvC+FyZAkf5HX1eCjAzUtS4qEB5UFIgi7pH9i7Hl45EKjQHbT9fN4BsMA==}
+    engines: {node: '>= 22.17.0'}
 
   mime-db@1.52.0:
     resolution: {integrity: sha512-sPU4uV7dYlvtWJxwwxHD0PuihVNiE7TyAbQ5SWxDCB9mUYvOgroQOwYQQOKPJ8CIbE+1ETVlOoK1UC2nU3gYvg==}
@@ -7520,9 +7548,22 @@ snapshots:
 
   '@lukeed/csprng@1.1.0': {}
 
+  '@mikro-orm/cli@7.0.12(dataloader@2.2.3)':
+    dependencies:
+      '@mikro-orm/core': 7.0.12(dataloader@2.2.3)
+      mikro-orm: 7.0.12
+      yargs: 17.7.2
+    transitivePeerDependencies:
+      - dataloader
+
   '@mikro-orm/core@7.0.12(dataloader@2.2.3)':
     optionalDependencies:
       dataloader: 2.2.3
+
+  '@mikro-orm/migrations@7.0.12(@mikro-orm/core@7.0.12(dataloader@2.2.3))':
+    dependencies:
+      '@mikro-orm/core': 7.0.12(dataloader@2.2.3)
+      '@mikro-orm/sql': 7.0.12(@mikro-orm/core@7.0.12(dataloader@2.2.3))
 
   '@mikro-orm/nestjs@7.0.1(@mikro-orm/core@7.0.12(dataloader@2.2.3))(@nestjs/common@11.1.19(reflect-metadata@0.1.14)(rxjs@7.8.2))(@nestjs/core@11.1.19)(reflect-metadata@0.1.14)':
     dependencies:
@@ -9645,6 +9686,8 @@ snapshots:
 
   dotenv@17.4.1: {}
 
+  dotenv@17.4.2: {}
+
   dunder-proto@1.0.1:
     dependencies:
       call-bind-apply-helpers: 1.0.2
@@ -11047,6 +11090,8 @@ snapshots:
     dependencies:
       braces: 3.0.3
       picomatch: 2.3.2
+
+  mikro-orm@7.0.12: {}
 
   mime-db@1.52.0: {}
 
