@@ -3,6 +3,9 @@ import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloGatewayDriver, ApolloGatewayDriverConfig } from '@nestjs/apollo';
 import { IntrospectAndCompose } from '@apollo/gateway';
 import { ConfigModule } from '@nestjs/config';
+import { AuthModule } from '@thallesp/nestjs-better-auth';
+import { MikroORM } from '@mikro-orm/core';
+import { createAuth } from '../../../libs/auth-core/src';
 
 @Module({
   imports: [
@@ -18,6 +21,12 @@ import { ConfigModule } from '@nestjs/config';
       },
     }),
     ConfigModule.forRoot(),
+    AuthModule.forRootAsync({
+      inject: [MikroORM],
+      useFactory: (orm: MikroORM) => ({
+        auth: createAuth(orm),
+      }),
+    }),
   ],
 })
 export class GatewayModule {}

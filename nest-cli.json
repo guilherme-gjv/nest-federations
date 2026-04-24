@@ -7,6 +7,15 @@
     "tsConfigPath": "apps/nest-federations-source/tsconfig.app.json"
   },
   "projects": {
+    "auth-core": {
+      "type": "library",
+      "root": "libs/auth-core",
+      "entryFile": "index",
+      "sourceRoot": "libs/auth-core/src",
+      "compilerOptions": {
+        "tsConfigPath": "libs/auth-core/tsconfig.lib.json"
+      }
+    },
     "database": {
       "type": "library",
       "root": "libs/database",

@@ -16,6 +16,12 @@
   "compilerOptions": {
     "baseUrl": "./",
     "paths": {
+      "@app/auth-core": [
+        "libs/auth-core/src"
+      ],
+      "@app/auth-core/*": [
+        "libs/auth-core/src/*"
+      ],
       "@app/database": [
         "libs/database/src"
       ],
